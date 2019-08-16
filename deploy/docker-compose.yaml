@@ -1,0 +1,26 @@
+version: '3'
+services:
+  janus:
+    image: atyenoria/janus-webrtc-gateway-docker
+    ports:
+      - "8088:8088" 
+    volumes:
+      - /root/kien/transcoder/docker-gstreamer:/tmp
+      - ./ssl:/etc/ssl 
+    command: janus -c /etc/ssl/certs/nginx-selfsigned.crt -k /etc/ssl/private/nginx-selfsigned.key 
+    
+  nginx:
+    image: nginx:1.15-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8089:8089"
+      - "8188:8188"
+    depends_on:
+      - janus
+ 
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./demos:/opt/demos
+      - ./ssl:/etc/ssl
+
