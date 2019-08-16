@@ -1,5 +1,11 @@
 version: '3'
 services:
+  stun:
+    image: bprodoehl/turnserver
+    ports:
+      - "3478:3478"
+      - "3478:3478/udp"
+
   janus:
     image: atyenoria/janus-webrtc-gateway-docker
     ports:
@@ -7,8 +13,10 @@ services:
     volumes:
       - /root/kien/transcoder/docker-gstreamer:/tmp
       - ./ssl:/etc/ssl 
-    command: janus -c /etc/ssl/certs/nginx-selfsigned.crt -k /etc/ssl/private/nginx-selfsigned.key 
-    
+    depends_on:
+      - stun
+    command: janus -c /etc/ssl/certs/nginx-selfsigned.crt -k /etc/ssl/private/nginx-selfsigned.key  -S deploy_stun_1:3478    
+
   nginx:
     image: nginx:1.15-alpine
     ports:
@@ -23,4 +31,3 @@ services:
       - ./data/nginx:/etc/nginx/conf.d
       - ./demos:/opt/demos
       - ./ssl:/etc/ssl
-
