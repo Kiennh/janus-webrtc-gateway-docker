@@ -109,8 +109,8 @@ general: {
 
 # Certificate and key to use for DTLS (and passphrase if needed).
 certificates: {
-	cert_pem = "/etc/letsencrypt/live/167.71.198.191/fullchain.pem"
-	cert_key = "/etc/letsencrypt/live/167.71.198.191/privkey.pem"
+	cert_pem = "/etc/letsencrypt/live/janus.tinhbotngheviet.com/fullchain.pem"
+	cert_key = "/etc/letsencrypt/live/janus.tinhbotngheviet.com/privkey.pem"
 	#cert_pwd = "secretpassphrase"
 }
 
