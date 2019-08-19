@@ -36,8 +36,9 @@ services:
       - nginx
       - certbot
     volumes:
-      - /root/kien/transcoder/docker-gstreamer:/tmp
-      - ./ssl:/etc/ssl
+      - /tmp:/tmp
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
       - ./janus:/usr/local/etc/janus 
     depends_on:
       - stun
