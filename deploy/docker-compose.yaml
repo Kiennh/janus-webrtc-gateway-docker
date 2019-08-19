@@ -12,11 +12,11 @@ services:
       - "8088:8088" 
     volumes:
       - /root/kien/transcoder/docker-gstreamer:/tmp
-      - ./ssl:/etc/ssl 
+      - ./ssl:/etc/ssl
+      - ./janus:/usr/local/etc/janus 
     depends_on:
       - stun
-    command: janus -c /etc/ssl/certs/nginx-selfsigned.crt -k /etc/ssl/private/nginx-selfsigned.key  -S deploy_stun_1:3478    
-
+    command: janus -d 7 -S deploy_stun_1:3478
   nginx:
     image: nginx:1.15-alpine
     ports:
@@ -24,6 +24,7 @@ services:
       - "443:443"
       - "8089:8089"
       - "8188:8188"
+      - "8989:8989"
     depends_on:
       - janus
  
