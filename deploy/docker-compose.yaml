@@ -9,14 +9,14 @@ services:
   janus:
     image: atyenoria/janus-webrtc-gateway-docker
     ports:
-      - "8088:8088"
-      - "8089:8089"
-      - "8898:8989"
-
+      - "8088:8088" 
+      - "8089:8089" 
+      - "8898:8989" 
+ 
     volumes:
       - /tmp:/tmp
       - ./ssl:/etc/ssl
-      - ./janus:/usr/local/etc/janus
+      - ./janus:/usr/local/etc/janus 
     depends_on:
       - stun
     command: janus

@@ -158,8 +158,8 @@ media: {
 # be used for gathering candidates, and enable or disable the
 # internal libnice debugging, if needed.
 nat: {
-	#stun_server = "stun.voip.eutelia.it"
-	#stun_port = 3478
+        stun_server = "167.71.198.191"
+        stun_port = 3478
 	nice_debug = false
 	#full_trickle = true
 	#ice_lite = true
@@ -173,17 +173,17 @@ nat: {
 	# such, use the option with caution and only if you know what you're doing.
 	# Make sure you keep ICE Lite disabled, though, as it's not strictly
 	# speaking a publicly reachable server, and a NAT is still involved.
-	#nat_1_1_mapping = "1.2.3.4"
+	nat_1_1_mapping = "167.71.198.191"
 
 	# You can configure a TURN server in two different ways: specifying a
 	# statically configured TURN server, and thus provide the address of the
 	# TURN server, the transport (udp/tcp/tls) to use, and a set of valid
 	# credentials to authenticate...
-	#turn_server = "myturnserver.com"
-	#turn_port = 3478
-	#turn_type = "udp"
-	#turn_user = "myuser"
-	#turn_pwd = "mypassword"
+	turn_server = "167.71.198.191"
+	turn_port = 3478
+	turn_type = "udp"
+	#turn_user = "28224511"
+	#turn_pwd = "1379330808"
 
 	# ... or you can make use of the TURN REST API to get info on one or more
 	# TURN services dynamically. This makes use of the proposed standard of
