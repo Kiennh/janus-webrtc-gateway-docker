@@ -18,20 +18,14 @@ services:
       - ./janus:/usr/local/etc/janus 
     depends_on:
       - stun
-    command: janus 
+    command: janus
 
   nginx:
     image: nginx:1.15-alpine
     restart: unless-stopped
-    volumes:
-      - ./data/nginx:/etc/nginx/conf.d
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
     ports:
       - "80:80"
       - "443:443"
-      - "8089:8089" 
-      - "8898:8989" 
     depends_on:
       - janus
     volumes:
